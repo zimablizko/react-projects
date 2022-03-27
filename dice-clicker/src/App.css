@@ -1,6 +1,25 @@
 .app {
-    text-align: center;
     font-size: 2rem;
+    text-align: center;
+}
+
+.app .game-screen {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.app .victory-screen {
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.wincon-label {
+    color: gray;
+    font-size: 1.5rem;
 }
 
 .dice-board {
@@ -8,7 +27,6 @@
     justify-content: center;
     grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
     gap: 1rem;
-    margin-top: 0.5rem;
 }
 
 .dice {
@@ -56,4 +74,13 @@
     background-color: lightgray;
 }
 
+.btn.upgrade-btn {
+    background-color: white;
+    padding: .2rem .4rem;
+    border-radius: .3rem;
+}
+
+.btn.upgrade-btn:hover {
+    background-color: lightgray;
+}
 
