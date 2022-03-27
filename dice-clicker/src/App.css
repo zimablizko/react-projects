@@ -1,0 +1,59 @@
+.app {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.dice-board {
+    display: flex;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.dice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    background-color: white;
+    width: 3rem;
+    height: 3rem;
+}
+
+.dice-amount-input {
+    width: 2.5rem;
+    font-size: 2rem;
+    padding: .2rem .5rem;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+
+.btn {
+    font-size: 2rem;
+    margin-left: .5rem;
+}
+
+.btn.roll-btn {
+    background-color: hsl(0, 100%, 50%);
+    color: white;
+    padding: .3rem .5rem;
+    border-radius: .3rem;
+    border: none;
+}
+
+.btn.roll-btn:hover {
+    background-color: hsl(0, 100%, 30%);
+}
+
+.btn.reset-btn {
+    background-color: white;
+    padding: .2rem .4rem;
+    border-radius: .3rem;
+}
+
+.btn.reset-btn:hover {
+    background-color: lightgray;
+}
+
+
