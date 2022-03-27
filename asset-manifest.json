@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/react-projects/dice-clicker/static/css/main.ad4ef276.css",
-    "main.js": "/react-projects/dice-clicker/static/js/main.760847da.js",
-    "index.html": "/react-projects/dice-clicker/index.html",
-    "main.ad4ef276.css.map": "/react-projects/dice-clicker/static/css/main.ad4ef276.css.map",
-    "main.760847da.js.map": "/react-projects/dice-clicker/static/js/main.760847da.js.map"
+    "main.css": "/dice-clicker/static/css/main.ad4ef276.css",
+    "main.js": "/dice-clicker/static/js/main.760847da.js",
+    "index.html": "/dice-clicker/index.html",
+    "main.ad4ef276.css.map": "/dice-clicker/static/css/main.ad4ef276.css.map",
+    "main.760847da.js.map": "/dice-clicker/static/js/main.760847da.js.map"
   },
   "entrypoints": [
     "static/css/main.ad4ef276.css",
