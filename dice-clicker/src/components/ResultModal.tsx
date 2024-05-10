@@ -1,19 +1,27 @@
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { createPortal } from 'react-dom';
 
-const ResultModal = forwardRef(function ResultModal({ stats, onReset }, ref) {
-  const dialog = useRef();
+type ResultModalProps = {
+  stats: {
+    diceRolls: number;
+    bestRoll: number;
+  };
+  onReset: () => void;
+};
+
+const ResultModal = forwardRef(({ stats, onReset }: ResultModalProps, ref) => {
+  const dialog = useRef<HTMLDialogElement>(null);
 
   useImperativeHandle(ref, () => {
     return {
       open() {
-        dialog.current.showModal();
+        dialog.current!.showModal();
       },
     };
   });
 
   return createPortal(
-    <dialog ref={dialog} className="result-modal" onClose={onReset}>
+    <dialog ref={dialog} className="result-modal" onClose={() => onReset()}>
       <p>VICTORY!</p>
       <p>Dice rolls: {stats.diceRolls}</p>
       <p>Best roll: {stats.bestRoll}</p>
@@ -23,7 +31,7 @@ const ResultModal = forwardRef(function ResultModal({ stats, onReset }, ref) {
         </form>
       </div>
     </dialog>,
-    document.getElementById('modal')
+    document.getElementById('modal')!
   );
 });
 

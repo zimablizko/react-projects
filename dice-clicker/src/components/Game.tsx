@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { Dice } from 'model/dice.model';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { GameContext } from '../store/game-context';
 import DiceBoard from './DiceBoard';
@@ -8,9 +9,9 @@ const WIN_CONDITION_POINTS = 10;
 
 export default function Game() {
   const { points, diceAmount, stats, changePoints, changeDiceAmount, changeStats } = useContext(GameContext);
-  const winDialog = useRef();
+  const winDialog = useRef<any>(null);
 
-  const [dices, setDices] = useState([]);
+  const [dices, setDices] = useState<Dice[]>([]);
   const [upgradeCost, setUpgradeCost] = useState(0);
 
   const getRollResult = () => Math.floor(Math.random() * 6) + 1;
@@ -19,7 +20,7 @@ export default function Game() {
   const checkUpgradeBtnDisabled = () => points < upgradeCost;
 
   if (checkWinCondition()) {
-    winDialog.current.open();
+    winDialog.current!.open();
   }
 
   useEffect(() => {
