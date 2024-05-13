@@ -5,20 +5,22 @@ import { createContext, useReducer } from 'react';
 const initialState: GameState = {
   points: 0,
   diceAmount: 1,
+  rollCooldown: 1500,
   stats: { diceRolls: 0, bestRoll: 0 },
 };
 
 export const GameContext = createContext<GameContextType>({
-  points: 0,
-  diceAmount: 1,
-  stats: { diceRolls: 0, bestRoll: 0 },
+  ...initialState,
   changePoints: (val: number) => {
     console.log(val);
   },
   changeDiceAmount: (val: number) => {
     console.log(val);
   },
-  changeStats: (val: Object) => {
+  changeStats: (val: GameStats) => {
+    console.log(val);
+  },
+  changeRollCooldown: (val: number) => {
     console.log(val);
   },
 });
@@ -40,6 +42,12 @@ function gameContextReducer(state: GameState, action: GameAction): GameState {
     return { ...state, stats: action.value };
   }
 
+  if (action.type === 'CHANGE_ROLL_COOLDOWN') {
+    const newCooldown = state.rollCooldown + action.value;
+    if (newCooldown < 0) return state;
+    return { ...state, rollCooldown: newCooldown };
+  }
+
   return state;
 }
 
@@ -58,13 +66,19 @@ export default function GameContextProvider({ children }: { children: React.Reac
     dispatchGameState({ type: 'CHANGE_STATS', value });
   };
 
+  const changeRollCooldownHandler = (value: number) => {
+    dispatchGameState({ type: 'CHANGE_ROLL_COOLDOWN', value });
+  };
+
   const ctxValue: GameContextType = {
     points: gameState.points,
     diceAmount: gameState.diceAmount,
     stats: gameState.stats,
+    rollCooldown: gameState.rollCooldown,
     changePoints: changePointsHandler,
     changeDiceAmount: changeDiceAmountHandler,
     changeStats: changeStatsHandler,
+    changeRollCooldown: changeRollCooldownHandler,
   };
 
   return <GameContext.Provider value={ctxValue}>{children}</GameContext.Provider>;

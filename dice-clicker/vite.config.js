@@ -12,4 +12,5 @@ export default defineConfig({
       exclude: [],
     }),
   ],
+  base: '/react-projects/',
 });

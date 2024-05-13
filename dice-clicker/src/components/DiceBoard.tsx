@@ -7,7 +7,7 @@ type DiceBoardProps = {
 
 function DiceBoard({ dices }: DiceBoardProps) {
   return (
-    <div className="dice-board">
+    <div className="row dice-board">
       {dices.map((dice) => {
         return <DiceElement key={dice.id} dice={dice} />;
       })}
