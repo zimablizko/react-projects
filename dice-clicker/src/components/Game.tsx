@@ -19,6 +19,7 @@ export default function Game() {
   const getUpgradeCost = () => diceAmount * 10;
   const checkWinCondition = () => points >= GAME_SETTINGS.winCondition;
   const checkUpgradeBtnDisabled = () => points < upgradeCost;
+  const checkRollBtnDisabled = () => isCooldown > 0;
 
   if (checkWinCondition()) {
     winDialog.current!.open();
@@ -79,6 +80,12 @@ export default function Game() {
     <>
       <div className="game-screen">
         <div className="row">
+          <label>🎲 amount: {diceAmount}</label>
+          <button className="btn upgrade-btn" disabled={checkUpgradeBtnDisabled()} onClick={handleUpgradeClick}>
+            +1 🎲 (Cost: {upgradeCost})
+          </button>
+        </div>
+        <div className="row">
           <p className="points">
             Points: {points}
             <br></br>
@@ -87,19 +94,14 @@ export default function Game() {
         </div>
 
         <DiceBoard dices={dices} />
+
         <div className="row">
-          <label>🎲 amount: {diceAmount}</label>
-          <button className="btn upgrade-btn" disabled={checkUpgradeBtnDisabled()} onClick={handleUpgradeClick}>
-            +1 🎲 (Cost: {upgradeCost})
-          </button>
-        </div>
-        <div className="row">
-          <button className="btn roll-btn" onClick={handleRollClick} disabled={isCooldown > 0}>
+          <button className="btn roll-btn" onClick={handleRollClick} disabled={checkRollBtnDisabled()}>
             Roll
           </button>
-          <button className="btn reset-btn" onClick={handleResetClick}>
+          {/* <button className="btn reset-btn" onClick={handleResetClick}>
             Restart
-          </button>
+          </button> */}
         </div>
       </div>
       <ResultModal ref={winDialog} stats={stats} onReset={handleResetClick} />
