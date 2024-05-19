@@ -5,3 +5,6 @@
 /flashcard-quiz/package-lock.json
 /currency-converter/.idea/*
 /dice-clicker/.idea/*
+/dice-clicker/dist/*
+react-course/class-based-components/node_modules/.bin/esparse
+**/node_modules/*

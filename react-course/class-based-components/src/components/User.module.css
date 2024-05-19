@@ -1,0 +1,10 @@
+.user {
+  margin: 1rem 0;
+  font-weight: bold;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  width: 50%;
+  margin: 2rem auto;
+  text-align: center;
+}
