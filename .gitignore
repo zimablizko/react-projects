@@ -8,3 +8,4 @@
 /dice-clicker/dist/*
 react-course/class-based-components/node_modules/.bin/esparse
 **/node_modules/*
+/react-course/react-deployment/build/*
